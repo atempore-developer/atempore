@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /*.json$
+Disallow: /*.txt$
+
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+Sitemap: https://atempore.com.py/sitemap.xml
