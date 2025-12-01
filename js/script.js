@@ -1,51 +1,28 @@
-/* ==========================
-   MENÚ MOBILE
-========================== */
 const btn = document.getElementById("menu-btn");
 const overlay = document.getElementById("menu-overlay");
 const mobileMenuLinks = document.querySelectorAll(".mobile-menu a");
 
 let scrollY = 0;
 
-/* ==========================
-   ABRIR MENÚ (SIN position: fixed)
-========================== */
 function openMenu() {
     scrollY = window.scrollY;
-
     document.body.classList.add("menu-open");
-
-    // Bloquear scroll sin romper layout
     document.body.style.overflow = "hidden";
-
-    // Evitar salto lateral del scrollbar
     const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
     if (scrollBarWidth > 0) {
         document.body.style.paddingRight = scrollBarWidth + "px";
     }
 }
 
-/* ==========================
-   CERRAR MENÚ (mantener animación del menú)
-========================== */
 function closeMenu() {
-
-    // DESACTIVAR animaciones del sitio, pero NO del menú
     document.body.classList.add("no-transitions");
-
     document.body.classList.remove("menu-open");
-
-    // Restaurar body sin generar saltos
     document.body.style.overflow = "";
     document.body.style.paddingRight = "";
-
-    // Mantener scroll EXACTO donde estaba
     window.scrollTo(0, scrollY);
-
-    // Reactivar animaciones del sitio DESPUÉS del cierre del menú
     setTimeout(() => {
         document.body.classList.remove("no-transitions");
-    }, 350); // ⬅️ COINCIDE con la animación del menú (0.35s)
+    }, 350);
 }
 
 if (btn && overlay) {
@@ -56,19 +33,13 @@ if (btn && overlay) {
             openMenu();
         }
     });
-
     overlay.addEventListener("click", closeMenu);
 }
 
-/* Cerrar menú al hacer clic en los enlaces */
 mobileMenuLinks.forEach(link => {
     link.addEventListener("click", closeMenu);
 });
 
-
-/* ==========================
-   HEADER REACTIVO SEGÚN SCROLL
-========================== */
 document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector(".header");
     const menuButton = document.querySelector("#menu-btn");
@@ -99,17 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
     observerHero.observe(hero);
 });
 
-
-/* ==========================
-   GALERÍA / LIGHTBOX
-========================== */
 const obraCards = document.querySelectorAll(".obra-card img");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 const closeLightbox = document.getElementById("close-lightbox");
 
 if (lightbox && lightboxImg && closeLightbox && obraCards.length > 0) {
-
     obraCards.forEach(img => {
         img.addEventListener("click", () => {
             lightbox.classList.add("open");
@@ -130,12 +96,7 @@ if (lightbox && lightboxImg && closeLightbox && obraCards.length > 0) {
     });
 }
 
-
-/* ==========================
-   BOTÓN VER MÁS / VER MENOS
-========================== */
 document.addEventListener("DOMContentLoaded", () => {
-
     const obras = document.querySelectorAll(".obra-card");
     const btn = document.getElementById("btn-ver-mas");
 
@@ -172,23 +133,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         updateButton();
     });
-
 });
 
-
-/* ==========================
-   ANIMACIONES CON SCROLL
-========================== */
 document.addEventListener("DOMContentLoaded", () => {
     const animElements = document.querySelectorAll(
         ".animate, .animate-left, .animate-right, .animate-zoom"
     );
 
     const animObserver = new IntersectionObserver(entries => {
-
-        // Si se está cerrando el menú → NO animar nada del sitio
         if (document.body.classList.contains("no-transitions")) return;
-
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("show");
