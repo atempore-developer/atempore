@@ -151,3 +151,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     animElements.forEach(el => animObserver.observe(el));
 });
+
+// ================= FAQ ACCORDION ==================
+document.addEventListener("DOMContentLoaded", () => {
+    const faqs = document.querySelectorAll(".faq-item");
+
+    faqs.forEach(item => {
+        const button = item.querySelector(".faq-question");
+
+        button.addEventListener("click", () => {
+            const isOpen = item.classList.contains("open");
+
+            // Cierra todos
+            faqs.forEach(f => {
+                f.classList.remove("open");
+                f.querySelector(".faq-answer").style.maxHeight = null;
+            });
+
+            // Si no estaba abierto, abrirlo
+            if (!isOpen) {
+                item.classList.add("open");
+                const answer = item.querySelector(".faq-answer");
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            }
+        });
+    });
+});
