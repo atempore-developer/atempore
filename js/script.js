@@ -177,3 +177,70 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+
+// =========================================
+//      CONTADOR REGRESIVO 24 HORAS CON LOCALSTORAGE
+// =========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+    const h = document.getElementById("h");
+    const m = document.getElementById("m");
+    const s = document.getElementById("s");
+
+    const COUNTDOWN_KEY = "countdown_end_time";
+
+    // Obtiene tiempo de finalización guardado
+    let endTime = localStorage.getItem(COUNTDOWN_KEY);
+
+    // Si no existe, se crea uno nuevo (24h desde ahora)
+    if (!endTime) {
+        endTime = Date.now() + 24 * 60 * 60 * 1000;
+        localStorage.setItem(COUNTDOWN_KEY, endTime);
+    } else {
+        endTime = parseInt(endTime, 10);
+    }
+
+    function updateDisplay(total) {
+        const hours = String(Math.floor(total / 3600)).padStart(2, "0");
+        const mins = String(Math.floor((total % 3600) / 60)).padStart(2, "0");
+        const secs = String(total % 60).padStart(2, "0");
+
+        const elements = [
+            [h, hours],
+            [m, mins],
+            [s, secs]
+        ];
+
+        elements.forEach(([el, value]) => {
+            if (el.textContent !== value) {
+                el.textContent = value;
+
+                el.classList.remove("tick");
+                void el.offsetWidth; 
+                el.classList.add("tick");
+            }
+        });
+    }
+
+    function tick() {
+        const now = Date.now();
+        let diff = Math.floor((endTime - now) / 1000);
+
+        if (diff <= 0) {
+            updateDisplay(0);
+            h.textContent = "00";
+            m.textContent = "00";
+            s.textContent = "00";
+            clearInterval(interval);
+            return;
+        }
+
+        updateDisplay(diff);
+    }
+
+    // Primera actualización inmediata
+    tick();
+
+    const interval = setInterval(tick, 1000);
+});

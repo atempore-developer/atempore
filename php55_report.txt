@@ -1,0 +1,160 @@
+=== PHP Vulnerability Detection Report ===
+Target: https://infocasas.com.py
+
+[!] POSIBLE VERSIÓN DE PHP DETECTADA:
+  - PHP/5.5.9
+  - PHP/5.5.9
+  - PHP/5.5.9
+  - PHP/5.5.9
+
+
+--- Test: Headers ---
+Status: 200
+Headers:
+  Date: Fri, 05 Dec 2025 09:11:52 GMT
+  Content-Type: text/html; charset=utf-8
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: nginx
+  X-Powered-By: Next.js
+  ETag: "30696-l2Nh+BRiYLXqrcXIWiutVXTAz5g"
+  Vary: Accept-Encoding
+  Content-Encoding: gzip
+  X-Debug-Server: ic_merge1-default-py
+  X-Cache-Status: MISS
+
+Snippet de respuesta:
+<!DOCTYPE html><html class="infocasas-theme" id="bodyTag" lang="es-PY"><head><link rel="preload" as="font" href="https://cdn4.fincaraiz.com.co/web/5fdcaa52b06cf_infocdn__infocasas-regular.woff2" type="font/woff" crossorigin="anonymous"/><link rel="preload" as="font" href="https://cdn4.fincaraiz.com.co/web/5fdcaa52af7c5_infocdn__infocasas-bold.woff2" type="font/woff" crossorigin="anonymous"/><script>
+								function getWidth() {
+								return Math.max(
+									document.body.scrollWidth,
+						
+
+PHP versions found in this test:
+
+-------------------------
+
+--- Test: Nonexistent .php file ---
+Status: 404
+Headers:
+  Date: Fri, 05 Dec 2025 09:11:55 GMT
+  Content-Type: text/html
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: nginx
+  Vary: Accept-Encoding
+  X-Powered-By: PHP/5.5.9-1ubuntu4.29
+  Set-Cookie: PHPSESSIDIC=s9v99d9k49lnpkrsvjs4o8d2f0; expires=Fri, 05-Dec-2025 14:12:44 GMT; Max-Age=18000; path=/; domain=.infocasas.com.py
+  Expires: Thu, 19 Nov 1981 08:52:00 GMT
+  Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+  Pragma: no-cache
+  Content-Encoding: gzip
+
+Snippet de respuesta:
+<!doctype html><html
+prefix="og: http://ogp.me/ns#"><head><meta
+http-equiv="Content-Type" content="text/html; charset=utf-8" /><base
+href="/sitio/" /><meta
+name="description" content="El portal 100% inmobiliario mÃ¡s completo, moderno e intuitivo de Uruguay. IngresÃ¡ ahora y encontrÃ¡ la propiedad en venta o alquiler que estÃ¡s buscando!" /><meta
+name="keywords" content="
+Inmuebles, casas, apartamentos, proyectos inmobiliarios, terrenos, campos, oficina, alquiler, venta, revista" /><meta
+name="a
+
+PHP versions found in this test:
+  - PHP/5.5.9
+
+-------------------------
+
+--- Test: Array parameter test ---
+Status: 404
+Headers:
+  Date: Fri, 05 Dec 2025 09:11:57 GMT
+  Content-Type: text/html
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: nginx
+  Vary: Accept-Encoding
+  X-Powered-By: PHP/5.5.9-1ubuntu4.29
+  Set-Cookie: PHPSESSIDIC=1bqcusdstf5fd6nmj6brhvp2s7; expires=Fri, 05-Dec-2025 14:12:46 GMT; Max-Age=18000; path=/; domain=.infocasas.com.py
+  Expires: Thu, 19 Nov 1981 08:52:00 GMT
+  Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+  Pragma: no-cache
+  Content-Encoding: gzip
+
+Snippet de respuesta:
+<!doctype html><html
+prefix="og: http://ogp.me/ns#"><head><meta
+http-equiv="Content-Type" content="text/html; charset=utf-8" /><base
+href="/sitio/" /><meta
+name="description" content="El portal 100% inmobiliario mÃ¡s completo, moderno e intuitivo de Uruguay. IngresÃ¡ ahora y encontrÃ¡ la propiedad en venta o alquiler que estÃ¡s buscando!" /><meta
+name="keywords" content="
+Inmuebles, casas, apartamentos, proyectos inmobiliarios, terrenos, campos, oficina, alquiler, venta, revista" /><meta
+name="a
+
+PHP versions found in this test:
+  - PHP/5.5.9
+
+-------------------------
+
+--- Test: Long parameter test ---
+Status: 404
+Headers:
+  Date: Fri, 05 Dec 2025 09:11:59 GMT
+  Content-Type: text/html
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: nginx
+  Vary: Accept-Encoding
+  X-Powered-By: PHP/5.5.9-1ubuntu4.29
+  Set-Cookie: PHPSESSIDIC=3p6r5l31slr3l6qe26fnjeum70; expires=Fri, 05-Dec-2025 14:12:48 GMT; Max-Age=18000; path=/; domain=.infocasas.com.py
+  Expires: Thu, 19 Nov 1981 08:52:00 GMT
+  Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+  Pragma: no-cache
+  Content-Encoding: gzip
+
+Snippet de respuesta:
+<!doctype html><html
+prefix="og: http://ogp.me/ns#"><head><meta
+http-equiv="Content-Type" content="text/html; charset=utf-8" /><base
+href="/sitio/" /><meta
+name="description" content="El portal 100% inmobiliario mÃ¡s completo, moderno e intuitivo de Uruguay. IngresÃ¡ ahora y encontrÃ¡ la propiedad en venta o alquiler que estÃ¡s buscando!" /><meta
+name="keywords" content="
+Inmuebles, casas, apartamentos, proyectos inmobiliarios, terrenos, campos, oficina, alquiler, venta, revista" /><meta
+name="a
+
+PHP versions found in this test:
+  - PHP/5.5.9
+
+-------------------------
+
+--- Test: Traversal test ---
+Status: 404
+Headers:
+  Date: Fri, 05 Dec 2025 09:12:01 GMT
+  Content-Type: text/html
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  Server: nginx
+  Vary: Accept-Encoding
+  X-Powered-By: PHP/5.5.9-1ubuntu4.29
+  Set-Cookie: PHPSESSIDIC=egh6o1mh2en34sa9h3e9dn3sq6; expires=Fri, 05-Dec-2025 14:12:50 GMT; Max-Age=18000; path=/; domain=.infocasas.com.py
+  Expires: Thu, 19 Nov 1981 08:52:00 GMT
+  Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+  Pragma: no-cache
+  Content-Encoding: gzip
+
+Snippet de respuesta:
+<!doctype html><html
+prefix="og: http://ogp.me/ns#"><head><meta
+http-equiv="Content-Type" content="text/html; charset=utf-8" /><base
+href="/sitio/" /><meta
+name="description" content="El portal 100% inmobiliario mÃ¡s completo, moderno e intuitivo de Uruguay. IngresÃ¡ ahora y encontrÃ¡ la propiedad en venta o alquiler que estÃ¡s buscando!" /><meta
+name="keywords" content="
+Inmuebles, casas, apartamentos, proyectos inmobiliarios, terrenos, campos, oficina, alquiler, venta, revista" /><meta
+name="a
+
+PHP versions found in this test:
+  - PHP/5.5.9
+
+-------------------------
+

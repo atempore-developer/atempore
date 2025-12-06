@@ -36,7 +36,6 @@
         rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-    <link rel="icon" href="images/logo.ico" type="image/x-icon">
     <link rel="icon" type="image/png" href="/images/favicon.png" sizes="48x48">
 
     <link rel="stylesheet" href="css/landing-capiata.css">
@@ -66,12 +65,11 @@
             </div>
 
             <nav class="nav animate-right" role="navigation" aria-label="Menú principal">
-                <a href="#nosotros">Sobre Nosotros</a>
-                <a
-                    href="https://wa.me/595985927725?text=%C2%A1Hola!%20%F0%9F%91%8B%20Me%20gustar%C3%ADa%20recibir%20el%20cat%C3%A1logo%20completo%20de%20Atempore.%20%C2%BFPodr%C3%ADas%20enviarme%20las%20opciones%20disponibles%20junto%20con%20precios%20y%20detalles%3F%20%F0%9F%93%8C%F0%9F%8F%A1%E2%9C%A8">Catálogo</a>
-                <a href="#obras">Proyectos</a>
-                <a target="_blank"
-                    href="https://wa.me/595985927725?text=%C2%A1Hola!%20%F0%9F%91%8B%20Me%20interesa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20viviendas%20y%20proyectos%20disponibles%20en%20Atempore.%20%C2%BFPodr%C3%ADas%20ayudarme%20con%20detalles%2C%20precios%20y%20opciones%20de%20financiaci%C3%B3n%3F%20%F0%9F%8F%A1%E2%9C%A8">Contacto</a>
+                <a href="#section3">Tipología</a>
+                <a href="#section4">Beneficios</a>
+                <a href="#section5">Proceso</a>
+                <a href="#section6">Nosotros</a>
+                <a href="#section8" class="contacto">Contacto</a>
             </nav>
 
         </div>
@@ -89,7 +87,6 @@
             <img src="images/logo.webp" alt="Logo móvil Atempore">
         </div>
 
-        <a href="#section1">Inicio</a>
         <a href="#section2">¿Para quién es?</a>
         <a href="#section3">Tipología</a>
         <a href="#section4">Beneficios</a>
@@ -107,7 +104,7 @@
     <main class="page-wrapper">
 
         <!-- SECCIÓN 1 — HERO -->
-        <section id="section1" class="hero animate">
+        <section id="hero" class="hero animate">
 
             <div class="hero-overlay"></div>
 
@@ -125,13 +122,14 @@
 
         </section>
 
+        <div id="servicios-trigger"></div>
 
-        <!-- SECCIÓN 2 — PARA QUIÉN ES -->
         <section id="section2" class="nosotros animate">
 
             <h2 class="serv-title">¿Para quién es esta vivienda?</h2>
 
             <div class="sobre-wrapper">
+
                 <div class="sobre-text animate-left">
                     <p>
                         Pensada para quienes necesitan una casa lista para vivir, con ambientes prácticos y detalles
@@ -146,68 +144,123 @@
                         href="https://wa.me/595985927725?text=Hola!%20Quiero%20más%20información%20sobre%20la%20vivienda."
                         class="cta">Quiero más información</a>
                 </div>
+
+                <!-- ⭐ NUEVA IMAGEN A LA DERECHA -->
+                <div class="sobre-img animate-right">
+                    <img src="images/resources/neoclasic.webp" alt="Imagen sobre la vivienda">
+                </div>
+
             </div>
 
         </section>
 
-
-        <!-- SECCIÓN 3 — TIPOLOGÍA -->
-        <section id="section3" class="obras animate">
+        <section id="section3" class="tipologia-section animate">
             <h2 class="obras-title">Conocé la tipología neoclasic</h2>
 
             <div class="tipologia-wrapper animate">
 
+                <!-- Imagen izquierda -->
                 <div class="tipologia-img">
-                    <img src="images/resources/render.webp" alt="Render fachada tipología neoclasic">
+                    <div class="img-frame">
+                        <img src="images/resources/neoclasic.webp" alt="Render fachada tipología neoclasic">
+                    </div>
                 </div>
 
-                <div class="tipologia-info">
-                    <ul>
-                        <li><b>51 m²</b></li>
-                        <li><b>2 habitaciones</b> + 1 baño familiar</li>
-                        <li><b>Urbanización:</b> <a target="_blank"
-                                href="https://maps.app.goo.gl/biuCb6hXwUkdXjyQ6">Capiatá - Rojas Cañada</a></li>
+                <!-- Texto derecha -->
+                <div class="tipologia-info card-float">
+                    <ul class="tipologia-list">
+                        <li><b>Superficie:</b> 51 m²</li>
+                        <li><b>Incluye:</b> 2 habitaciones + 1 baño familiar</li>
+                        <li>
+                            <b>Urbanización:</b>
+                            <a target="_blank" href="https://maps.app.goo.gl/biuCb6hXwUkdXjyQ6">Capiatá — Rojas
+                                Cañada</a>
+                        </li>
                         <li><b>Contado:</b> 350.000.000 Gs.</li>
                         <li><b>Cuotas desde:</b> 2.499.000 Gs.</li>
                     </ul>
 
                     <a target="_blank"
                         href="https://wa.me/595985927725?text=Hola!%20Quiero%20aplicar%20a%20la%20tipología%20neoclasic."
-                        class="cta">Aplicá hoy mismo</a>
+                        class="cta tipologia-cta">Aplicá hoy mismo</a>
                 </div>
             </div>
+
+            <!-- MAPA 100% width debajo de todo -->
+            <div class="map-fullwidth">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3604.2092609038255!2d-57.43711099999999!3d-25.397804999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDIzJzUyLjEiUyA1N8KwMjYnMTMuNiJX!5e0!3m2!1ses-419!2spy!4v1765005857589!5m2!1ses-419!2spy"
+                    allowfullscreen="" loading="lazy">
+                </iframe>
+            </div>
+
         </section>
+
 
 
         <!-- SECCIÓN 4 — BONO DE ACCIÓN RÁPIDA -->
         <section id="section4" class="faq-section animate">
             <h2 class="faq-title">Bono de acción rápida</h2>
 
-            <p class="animate">
+            <p class="animate bono-subtitle">
                 ¡Aplicá hoy y accedé a beneficios exclusivos!
             </p>
 
-            <ul class="beneficios-list animate">
-                <li>Baño con mesada de granito y grifería moderna</li>
-                <li>Cocina moderna amoblada</li>
-                <li>Parrilla incluida</li>
-            </ul>
+            <!-- ⭐ BONOS -->
+            <div class="bonos-wrapper animate">
 
-            <!-- Contador (placeholder para tu JS futuro) -->
-            <div class="contador-box animate">
-                <h3>Tiempo restante:</h3>
-                <div id="countdown">24:00:00</div>
+                <div class="bono-card">
+                    <img src="images/resources/bano.webp" alt="Bono 1">
+                    <h3>Bono 1</h3>
+                    <p>Baño con mesada de granito y grifería moderna.</p>
+                </div>
+
+                <div class="bono-card">
+                    <img src="images/resources/cocina.webp" alt="Bono 2">
+                    <h3>Bono 2</h3>
+                    <p>Cocina moderna totalmente amoblada.</p>
+                </div>
+
+                <div class="bono-card">
+                    <img src="images/resources/parrilla.webp" alt="Bono 3">
+                    <h3>Bono 3</h3>
+                    <p>Parrilla de obsequio ya instalada.</p>
+                </div>
+
             </div>
 
-            <a target="_blank"
-                href="https://wa.me/595985927725?text=Hola!%20Quiero%20asegurar%20mi%20unidad%20con%20el%20bono."
-                class="cta">Asegurá tu unidad</a>
+            <div class="contador-box animate">
+                <h3>Tiempo restante:</h3>
+
+                <div id="countdown" class="countdown-wrapper">
+
+                    <div class="time-box">
+                        <span id="h" class="num">24</span>
+                        <small>Horas</small>
+                    </div>
+
+                    <div class="time-box">
+                        <span id="m" class="num">00</span>
+                        <small>Minutos</small>
+                    </div>
+
+                    <div class="time-box">
+                        <span id="s" class="num">00</span>
+                        <small>Segundos</small>
+                    </div>
+
+                </div>
+                <a target="_blank"
+                    href="https://wa.me/595985927725?text=Hola!%20Quiero%20asegurar%20mi%20unidad%20con%20el%20bono."
+                    class="cta">Asegurá tu unidad</a>
+            </div>
         </section>
+
 
 
         <!-- SECCIÓN 5 — PROCESO -->
         <section id="section5" class="nosotros animate">
-            <h2 class="serv-title">Cómo funciona el proceso</h2>
+            <h2 class="obras-title">Cómo funciona el proceso</h2>
 
             <div class="proceso-wrapper animate">
 
@@ -227,79 +280,126 @@
                     <span>4</span> Acompañamos tu obra hasta la entrega final.
                 </div>
 
+                <div class="proceso-paso">
+                    <span><i class='bx bx-bulb'></i></span> Un proceso claro para una decisión segura.
+                </div>
+
             </div>
 
-            <p class="animate">Un proceso claro para una decisión segura.</p>
 
         </section>
 
 
         <!-- SECCIÓN 6 — NOSOTROS -->
-        <section id="section6" class="sobre-nosotros animate">
+        <section class="sobre-nosotros animate" id="section6">
             <div class="sobre-wrapper">
 
                 <div class="sobre-text animate-left">
-                    <h2>Quiénes somos</h2>
+                    <h2>Sobre Nosotros</h2>
 
+                    <div class="sobre-img animate-right mobile-img">
+                        <img src="images/resources/alex.webp" alt="Equipo Atempore">
+                    </div>
                     <p>
                         Atempore nació de la convicción de que el paraguayo merece hogares bien diseñados, duraderos y
-                        accesibles.
-                        Porque construir no es solo levantar paredes, sino crear espacios que generen confianza, calidad
-                        de vida
-                        y orgullo de pertenencia.
+                        accesibles, donde la estética y la funcionalidad se encuentren. Porque creemos que construir no
+                        es solo levantar paredes, sino crear espacios que generen confianza, calidad de vida y orgullo
+                        de pertenencia.
                         <br><br>
-                        Creamos soluciones habitacionales funcionales con estética atemporal y procesos transparentes
-                        desde la elección del terreno hasta la entrega final.
+                        Cumplimos este propósito a través de diseños funcionales, una estética atemporal y procesos
+                        completamente transparentes que acompañan al cliente desde la elección del terreno hasta la
+                        entrega final.
                         <br><br>
-                        Contamos con el respaldo de socios constructores con más de 40 años de experiencia en obras
-                        públicas,
-                        lo que garantiza proyectos seguros y creados para perdurar.
+                        Además, contamos con el respaldo de socios constructores con más de 40 años de experiencia en
+                        obras públicas y licitaciones del Estado, permitiéndonos ofrecer desarrollos inmobiliarios
+                        seguros, planificados y creados para perdurar en el tiempo.
                     </p>
-
                     <a target="_blank"
                         href="https://wa.me/595985927725?text=Hola!%20Quiero%20aplicar%20a%20mi%20primera%20vivienda."
                         class="cta">Aplicá a tu primera vivienda</a>
                 </div>
 
                 <div class="sobre-img animate-right pc-img">
-                    <img src="images/resources/alex.jpeg" alt="Foto del equipo Atempore">
+                    <img src="images/resources/alex.webp" alt="Equipo Atempore">
                 </div>
 
             </div>
         </section>
 
 
-        <!-- SECCIÓN 7 — TIPOS -->
-        <section id="section7" class="obras animate">
-            <h2 class="obras-title">Conocé nuestras tres tipologías</h2>
 
-            <div class="obras-galeria">
+        <!-- SECCIÓN 7 — NUEVAS TIPOLOGÍAS -->
+        <section id="section7" class="tipos-section animate">
+            <h2 class="tipos-title">Conocé nuestras tres tipologías</h2>
 
-                <figure class="obra-card animate">
-                    <img src="images/resources/tipo1.webp" alt="">
-                    <figcaption class="obra-overlay"><span>Tipología A</span></figcaption>
-                </figure>
+            <div class="tipos-grid">
 
-                <figure class="obra-card animate">
-                    <img src="images/resources/tipo2.webp" alt="">
-                    <figcaption class="obra-overlay"><span>Tipología B</span></figcaption>
-                </figure>
+                <!-- TIPO 1 — NEOCLÁSICA -->
+                <div class="tipo-card animate">
+                    <div class="tipo-img">
+                        <img src="images/resources/fachada-neoclasic.webp" alt="Tipología Neoclásica">
+                    </div>
 
-                <figure class="obra-card animate">
-                    <img src="images/resources/tipo3.webp" alt="">
-                    <figcaption class="obra-overlay"><span>Tipología C</span></figcaption>
-                </figure>
+                    <div class="tipo-info">
+                        <h3 class="tipo-title">Neoclásica</h3>
+
+                        <p class="tipo-desc">
+                            Inspirada en la arquitectura clásica europea: simetría, líneas elegantes y una estética
+                            atemporal.
+                        </p>
+
+                        <a target="_blank"
+                            href="https://wa.me/595985927725?text=Hola!%20Quiero%20más%20detalles%20sobre%20la%20tipología%20neoclásica."
+                            class="cta">Ver detalles</a>
+                    </div>
+                </div>
+
+                <!-- TIPO 2 — MINIMALISTA -->
+                <div class="tipo-card animate">
+                    <div class="tipo-img">
+                        <img src="images/resources/fachada-minimalista.webp" alt="Tipología Minimalista">
+                    </div>
+
+                    <div class="tipo-info">
+                        <h3 class="tipo-title">Minimalista</h3>
+
+                        <p class="tipo-desc">
+                            Líneas puras, espacios funcionales y una apariencia moderna ideal para quienes buscan
+                            simplicidad elegante.
+                        </p>
+
+                        <a target="_blank"
+                            href="https://wa.me/595985927725?text=Hola!%20Quiero%20información%20sobre%20la%20tipología%20minimalista."
+                            class="cta">Ver detalles</a>
+                    </div>
+                </div>
+
+                <!-- TIPO 3 — CONTEMPORÁNEA -->
+                <div class="tipo-card animate">
+                    <div class="tipo-img">
+                        <img src="images/resources/fachada-contemporanea.webp" alt="Tipología Contemporánea">
+                    </div>
+
+                    <div class="tipo-info">
+                        <h3 class="tipo-title">Contemporánea</h3>
+
+                        <p class="tipo-desc">
+                            Un diseño moderno que combina materiales actuales, grandes ventanales y una estética urbana.
+                        </p>
+
+                        <a target="_blank"
+                            href="https://wa.me/595985927725?text=Hola!%20Quiero%20info%20de%20la%20tipología%20contemporánea."
+                            class="cta">Ver detalles</a>
+                    </div>
+                </div>
 
             </div>
 
-            <a target="_blank"
-                href="https://wa.me/595985927725?text=Hola!%20Quiero%20información%20sobre%20todas%20las%20tipologías."
-                class="cta">Aplicar</a>
         </section>
 
 
         <!-- SECCIÓN 8 — CONTACTO -->
-        <section id="section8" class="confian animate">
+        <section id="section8" class="animate">
 
             <h2 class="confian-title">Contactanos</h2>
 
@@ -323,9 +423,6 @@
 
     </main>
 
-
-
-    <!-- FOOTER ORIGINAL COMPLETO -->
     <footer class="footer" role="contentinfo">
 
         <div class="footer-grid">
@@ -339,17 +436,20 @@
             <div class="footer-col-group acerca-empresa-wrapper animate">
 
                 <section class="footer-col">
-                    <h4>Acerca de</h4>
-                    <a href="#section6">Sobre nosotros</a>
-                    <a href="#section5">Proceso</a>
-                    <a href="#section8">Contacto</a>
+                    <h4 id="footer-acerca">Acerca de</h4>
+                    <a href="https://atempore.com.py/#nosotros">Sobre nosotros</a>
+                    <a href="https://atempore.com.py/#nosotros">Misión & visión</a>
+                    <a target="_blank"
+                        href="https://wa.me/595985927725?text=%C2%A1Hola!%20%F0%9F%91%8B%20Me%20interesa%20recibir%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20viviendas%20y%20proyectos%20disponibles%20en%20Atempore.%20%C2%BFPodr%C3%ADas%20ayudarme%20con%20detalles%2C%20precios%20y%20opciones%20de%20financiaci%C3%B3n%3F%20%F0%9F%8F%A1%E2%9C%A8">Contacto</a>
                 </section>
 
                 <section class="footer-col">
-                    <h4>Empresa</h4>
-                    <a href="#section3">Tipología</a>
-                    <a href="#section7">Modelos</a>
-                    <a href="#section1">Inicio</a>
+                    <h4 id="footer-empresa">Empresa</h4>
+                    <a
+                        href="https://wa.me/595985927725?text=%C2%A1Hola!%20%F0%9F%91%8B%20Me%20gustar%C3%ADa%20recibir%20el%20cat%C3%A1logo%20completo%20de%20Atempore.%20%C2%BFPodr%C3%ADas%20enviarme%20las%20opciones%20disponibles%20junto%20con%20precios%20y%20detalles%3F%20%F0%9F%93%8C%F0%9F%8F%A1%E2%9C%A8">Catálogo</a>
+                    <a href="https://atempore.com.py/#obras">Proyectos</a>
+                    <a target="_blank"
+                        href="https://wa.me/595985927725?text=%C2%A1Hola!%20%F0%9F%91%8B%20Me%20interesa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20las%20opciones%20de%20Financiaci%C3%B3n%20de%20Atempore.%20%C2%BFPodr%C3%ADas%20ayudarme%20con%20requisitos%2C%20plazos%20y%20planes%20disponibles%3F%20%F0%9F%92%B0%F0%9F%93%84%E2%9C%A8">Financiación</a>
                 </section>
 
             </div>
@@ -375,12 +475,16 @@
 
     </footer>
 
-
-    <!-- LIGHTBOX -->
     <div id="lightbox" class="lightbox">
         <img id="lightbox-img" src="" alt="Imagen ampliada">
         <i id="close-lightbox" class='bx bx-x close-lightbox'></i>
     </div>
+
+    <a href="https://wa.me/595985927725?text=%C2%A1Hola!%20Estoy%20interesado%20en%20las%20viviendas%20de%20Atempore.%20%C2%BFPodr%C3%ADas%20brindarme%20m%C3%A1s%20informaci%C3%B3n%3F"
+        class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <i class='bx bxl-whatsapp'></i>
+    </a>
+
 
     <script src="js/script.js"></script>
 
