@@ -160,10 +160,10 @@
 
             <div class="tipologia-wrapper animate">
 
-                <!-- Imagen izquierda -->
                 <div class="tipologia-img">
                     <div class="img-frame">
-                        <img src="../images/resources/minim.webp" alt="Render fachada tipología neoclasic">
+                        <img id="tipologiaAnimada" src="../images/resources/minim.webp"
+                            alt="Render fachada tipología neoclasic">
                     </div>
                 </div>
 
@@ -186,7 +186,7 @@
                         </li>
 
                         <li>
-                            <b><i class='bx bx-credit-card'></i> Cuotas desde:</b> 2.299.000 Gs.
+                            <b><i class='bx bx-credit-card'></i> Cuotas desde:</b> 2.200.000 Gs.
                         </li>
 
                         <li class="precio">
@@ -677,6 +677,55 @@
 
         });
     </script>
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const img = document.getElementById("tipologiaAnimada");
+
+    const imgA = "../images/resources/minim.webp";               // Imagen original
+    const imgB = "../images/resources/fachada-neoclasic.webp";   // Imagen alternada
+
+    let interval = null;
+    let showingA = true;
+
+    function toggleImages() {
+        img.style.opacity = "0";
+
+        setTimeout(() => {
+            img.src = showingA ? imgB : imgA;
+            showingA = !showingA;
+            img.style.opacity = "1";
+        }, 800); // coincide con el fade del CSS (0.8s)
+    }
+
+    const section = document.querySelector("#section3");
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+
+                // Nuevo tiempo: espera 1.5s antes del primer cambio
+                setTimeout(() => toggleImages(), 1500);
+
+                // Nuevo intervalo más lento: cada 4s
+                interval = setInterval(toggleImages, 4000);
+
+            } else {
+                clearInterval(interval);
+                interval = null;
+
+                // Resetea a la imagen inicial
+                img.src = imgA;
+                showingA = true;
+            }
+        });
+    }, { threshold: 0.35 });
+
+    observer.observe(section);
+
+});
+</script>
+
 
 
 </body>

@@ -90,7 +90,6 @@
     line-height: 1;
     font-size: clamp(2.8rem, 8vw, 6rem);
     white-space: nowrap;
-    width: 100%;              /* clave para mantenerlo centrado */
 }
 
 /* "Gs." */
@@ -126,4 +125,8 @@
         text-align: center;
         width: auto;              /* centrado real */
     }
+}
+
+.tipologia-img .img-frame img {
+    transition: opacity 0.4s ease;
 }
