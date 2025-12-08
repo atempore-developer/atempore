@@ -32,7 +32,7 @@
         href="https://fonts.googleapis.com/css2?family=Nova+Round&family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/images/favicon.png" sizes="48x48">
+    <link rel="icon" type="image/png" href="favicon.png" sizes="48x48">
     <link rel="stylesheet" href="css/styles.css">
 
     <script type="application/ld+json">
@@ -92,7 +92,8 @@
         <section class="hero" id="hero" aria-labelledby="hero-title">
             <div class="hero-overlay"></div>
 
-            <img src="images/resources/background.png" class="hero-img" alt="Imagen de casa moderna">
+            <img src="images/resources/background.webp" class="hero-img bg-pc" alt="Hero imagen">
+            <img src="images/resources/background-cel.webp" class="hero-img bg-cel" alt="Hero imagen">
 
             <div class="hero-content">
 
@@ -199,63 +200,30 @@
             </div>
         </section>
 
-
-        <section class="obras animate" id="obras" aria-labelledby="obras-title">
+        <section class="carrusel-cards animate" id="carrusel">
             <h2 class="obras-title animate">Nuestros proyectos</h2>
 
-            <div class="obras-galeria" id="galeria">
+            <div class="carrusel-wrapper animate">
+                <button class="carrusel-btn prev"><i class='bx bx-chevron-left'></i></button>
+                <div class="carrusel-track-container">
+                    <div class="carrusel-track">
 
-                <figure class="obra-card animate">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&w=1200" alt="">
-                    <figcaption class="obra-overlay"><span>Residencia Moderna</span></figcaption>
-                </figure>
-
-                <figure class="obra-card animate">
-                    <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&w=1200" alt="">
-                    <figcaption class="obra-overlay"><span>Casa Familiar</span></figcaption>
-                </figure>
-
-                <figure class="obra-card animate">
-                    <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&w=1200" alt="">
-                    <figcaption class="obra-overlay"><span>Proyecto Minimalista</span></figcaption>
-                </figure>
-
-                <figure class="obra-card animate">
-                    <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?auto=format&w=1200" alt="">
-                    <figcaption class="obra-overlay"><span>Urbanización Cerrada</span></figcaption>
-                </figure>
-
-                <figure class="obra-card animate">
-                    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&w=1200" alt="">
-                    <figcaption class="obra-overlay"><span>Obra en Desarrollo</span></figcaption>
-                </figure>
-
-                <figure class="obra-card animate">
-                    <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&w=1200" alt="">
-                    <figcaption class="obra-overlay"><span>Casa Campo</span></figcaption>
-                </figure>
-
-                <figure class="obra-card animate">
-                    <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&w=1200" alt="">
-                    <figcaption class="obra-overlay"><span>Villa Premium</span></figcaption>
-                </figure>
-
-                <figure class="obra-card animate">
-                    <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?auto=format&w=1200" alt="">
-                    <figcaption class="obra-overlay"><span>Departamento Alto</span></figcaption>
-                </figure>
-
-                <figure class="obra-card animate">
-                    <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&w=1200" alt="">
-                    <figcaption class="obra-overlay"><span>Casa en Sanber</span></figcaption>
-                </figure>
-
+                        <!-- CARD 1 -->
+                        <div class="carrusel-item">
+                            <img src="images/resources/fachada-neoclasic.webp" alt="Tipología Neoclásica - Capiatá">
+                            <h3>Capiatá</h3>
+                            <p>Tu nueva vivienda en Rojas Cañada, lista para aplicar y ubicada en una zona con gran
+                                crecimiento y valorización.</p>
+                            <a class="cta card-cta" target="_blank" href="https://atempore.com.py/urbanizacion-capiata.html">
+                                Ver más información
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <button class="carrusel-btn next"><i class='bx bx-chevron-right'></i></button>
             </div>
-
-            <button class="btn-ver-mas" id="btn-ver-mas">
-                Ver más <i class='bx bx-chevron-down'></i>
-            </button>
         </section>
+
 
         <section class="confian animate" aria-labelledby="confian-title">
             <h2 class="confian-title animate">Confían en Nosotros</h2>
@@ -375,7 +343,10 @@
             </div>
 
             <section class="footer-col footer-qr-box animate-right">
-                <img src="images/resources/qr.webp" alt="QR para contacto vía WhatsApp" class="footer-qr">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3607.4538931871575!2d-57.60533142461522!3d-25.288949977652035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDE3JzIwLjIiUyA1N8KwMzYnMDkuOSJX!5e0!3m2!1ses!2spy!4v1765149810327!5m2!1ses!2spy"
+                    width="300" height="150" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </section>
 
         </div>

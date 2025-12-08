@@ -34,6 +34,10 @@ body.menu-open {
     height: 100vh;
 }
 
+.bg-cel {
+    display: none;
+}
+
 .page-wrapper {
     transition: transform 0.35s ease;
 }
@@ -622,6 +626,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: left;
 }
 
 .faq-question i {
@@ -961,6 +966,14 @@ section {
     .confian-item {
         padding: 0 10px;
     }
+
+    .bg-cel {
+        display: block;
+    }
+
+    .bg-pc {
+        display: none;
+    }
 }
 
 @media (max-width: 480px) {
@@ -981,6 +994,7 @@ section {
     .footer-col-group .footer-col a {
         font-size: .8rem;
     }
+
 }
 
 @media (max-width: 400px) {
@@ -1176,6 +1190,7 @@ section {
     display: flex;
     gap: 50px;
     align-items: center;
+    margin: auto;
 }
 
 /* Cada logo */
@@ -1186,10 +1201,12 @@ section {
     transition: opacity .3s ease;
 }
 
-/* MOBILE: carrusel infinito */
 @media (max-width: 768px) {
     .slide-track {
-        animation: scrollInfinite 5s linear infinite;
+        width: calc(300px * 6);
+        /* 3 originales + 3 duplicados */
+        animation: scrollInfinite 6s linear infinite;
+        gap: 50px;
     }
 
     @keyframes scrollInfinite {
@@ -1265,12 +1282,12 @@ section {
     justify-content: center;
     font-size: 34px;
     z-index: 9999;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .whatsapp-float:hover {
-    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
 /* Versión móvil más pequeña */
@@ -1288,4 +1305,253 @@ section {
     .footer-col {
         padding: 0;
     }
+}
+
+.slider {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.slide-track {
+    display: flex;
+    width: calc(200%);
+    /* Se duplica el contenido */
+    animation: scrollInfinite 12s linear infinite;
+}
+
+@keyframes scrollInfinite {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.slide {
+    flex: 0 0 auto;
+    /* evita que se compriman */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide img {
+    max-height: 70px;
+    width: auto;
+}
+
+.slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide-track {
+    display: flex;
+    width: max-content;
+    /* El track se adapta al contenido */
+    animation: scroll 12s linear infinite;
+}
+
+.slide {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* ANIMACIÓN PERFECTA */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Solo activar en mobile */
+@media (min-width: 769px) {
+    .slide-track {
+        animation: none !important;
+        transform: none !important;
+        justify-content: center;
+    }
+
+    .slide:nth-child(n+4) {
+        display: none;
+    }
+
+    .slide img {
+        height: 95px;
+    }
+}
+
+@media(max-width:470px) {
+    .confian-title {
+        font-size: 1.77rem;
+    }
+}
+
+/* ===========================
+   CARRUSEL DE TARJETAS (EN PX)
+=========================== */
+
+.carrusel-cards {
+    width: 100%;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.carrusel-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.carrusel-wrapper {
+    position: relative;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.carrusel-track-container {
+    overflow: hidden;
+}
+
+.carrusel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.3s ease;
+}
+
+/* =======================
+   CARD EN PIXELES + FUENTES RESPONSIVAS
+========================== */
+.carrusel-item {
+    width: 390px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+/* Imagen superior */
+.carrusel-item img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+}
+
+/* =======================
+   TEXTO (TIPOGRAFÍA RESPONSIVA)
+========================== */
+.carrusel-item h3 {
+    text-align: left;
+
+    /* Antes: 29px — ahora adaptativo */
+    font-size: clamp(20px, 2.5vw, 29px);
+
+    margin: 14px 18px 6px;
+    font-weight: 600;
+}
+
+.carrusel-item p {
+    text-align: left;
+
+    /* Antes: 18px — ahora adaptativo */
+    font-size: clamp(15px, 2vw, 18px);
+
+    margin: 0 18px 14px;
+    color: #444;
+    line-height: 1.35;
+}
+
+/* CTA */
+.card-cta {
+    width: fit-content;
+    margin: auto 18px 18px;
+    padding: 11px 10px;
+    font-size: clamp(13px, 1.8vw, 15px);
+    text-align: center;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/* =======================
+   FLECHAS
+========================== */
+.carrusel-btn {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+
+    /* RESPONSIVE */
+    font-size: clamp(18px, 2.2vw, 24px);
+
+    z-index: 20;
+}
+
+.carrusel-btn.prev { left: -10px; }
+.carrusel-btn.next { right: -10px; }
+
+.carrusel-btn:hover {
+    background: #f1f1f1;
+}
+
+/* Ocultar flechas si hay una sola card */
+.carrusel-wrapper.single .carrusel-btn {
+    display: none;
+}
+
+/* =======================
+   UNA SOLA CARD — CENTRADA
+========================== */
+.carrusel-wrapper.single .carrusel-track {
+    justify-content: center;
+}
+
+/* =======================
+   RESPONSIVE
+========================== */
+@media (max-width: 768px) {
+
+    .carrusel-item {
+        width: 260px;
+        height: auto; /* para que el contenido fluya mejor */
+    }
+
+    .carrusel-item img {
+        height: 170px;
+    }
+
+    .carrusel-btn.prev { left: 5px; }
+    .carrusel-btn.next { right: 5px; }
 }

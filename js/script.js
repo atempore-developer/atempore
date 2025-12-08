@@ -97,45 +97,6 @@ if (lightbox && lightboxImg && closeLightbox && obraCards.length > 0) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const obras = document.querySelectorAll(".obra-card");
-    const btn = document.getElementById("btn-ver-mas");
-
-    if (!btn || obras.length <= 6) return;
-
-    obras.forEach((obra, index) => {
-        if (index >= 6) obra.classList.add("obra-hidden");
-    });
-
-    let expanded = false;
-
-    const updateButton = () => {
-        if (expanded) {
-            btn.innerHTML = `Ver menos <i class='bx bx-chevron-up'></i>`;
-            btn.classList.add("ver-menos");
-        } else {
-            btn.innerHTML = `Ver más <i class='bx bx-chevron-down'></i>`;
-            btn.classList.remove("ver-menos");
-        }
-    };
-
-    updateButton();
-
-    btn.addEventListener("click", () => {
-        expanded = !expanded;
-
-        obras.forEach((obra, index) => {
-            if (index >= 6) {
-                expanded
-                    ? obra.classList.remove("obra-hidden")
-                    : obra.classList.add("obra-hidden");
-            }
-        });
-
-        updateButton();
-    });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
     const animElements = document.querySelectorAll(
         ".animate, .animate-left, .animate-right, .animate-zoom"
     );
@@ -217,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 el.textContent = value;
 
                 el.classList.remove("tick");
-                void el.offsetWidth; 
+                void el.offsetWidth;
                 el.classList.add("tick");
             }
         });
@@ -243,4 +204,128 @@ document.addEventListener("DOMContentLoaded", () => {
     tick();
 
     const interval = setInterval(tick, 1000);
+});
+
+
+// ===============================
+// POPUP AUTOMÁTICO SI HAY TIEMPO RESTANTE
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+
+    const h = document.getElementById("h");
+    const m = document.getElementById("m");
+    const s = document.getElementById("s");
+
+    const modal = document.getElementById("promo-modal");
+    const overlay = document.getElementById("promo-overlay");
+    const closeBtn = document.querySelector(".promo-close");
+    const promoBtn = document.querySelector(".promo-btn");
+
+    // Cerrar al hacer clic en "Ver beneficios"
+    if (promoBtn) {
+        promoBtn.addEventListener("click", (e) => {
+            hidePopup();  // Cierra el modal
+        });
+    }
+
+
+    if (!h || !m || !s || !modal || !overlay) return;
+
+    const showPopup = () => {
+        overlay.classList.add("show");
+        modal.classList.add("show");
+    };
+
+    const hidePopup = () => {
+        modal.classList.add("hide");
+        overlay.classList.remove("show");
+
+        setTimeout(() => {
+            modal.classList.remove("show", "hide");
+            modal.style.visibility = "hidden";
+        }, 300);
+    };
+
+    // Mostrar pop-up si el tiempo es distinto a 00:00:00
+    const checkCountdown = () => {
+        const hh = h.textContent.trim();
+        const mm = m.textContent.trim();
+        const ss = s.textContent.trim();
+
+        if (hh !== "00" || mm !== "00" || ss !== "00") {
+            showPopup();
+        }
+    };
+
+    // Ejecuta después de 800 ms para dejar cargar los valores del contador
+    setTimeout(checkCountdown, 800);
+
+    // Cerrar con X
+    closeBtn.addEventListener("click", hidePopup);
+
+    // Cerrar haciendo clic fuera
+    overlay.addEventListener("click", hidePopup);
+
+});
+// ==================================
+// SYNC COUNTDOWN DEL MODAL
+// ==================================
+document.addEventListener("DOMContentLoaded", () => {
+
+    const h = document.getElementById("h");
+    const m = document.getElementById("m");
+    const s = document.getElementById("s");
+
+    const mh = document.getElementById("mh");
+    const mm = document.getElementById("mm");
+    const ms = document.getElementById("ms");
+
+    if (!h || !m || !s || !mh || !mm || !ms) return;
+
+    // Copia los valores cada medio segundo
+    setInterval(() => {
+        mh.textContent = h.textContent;
+        mm.textContent = m.textContent;
+        ms.textContent = s.textContent;
+    }, 300);
+
+});
+
+// ============================================
+//     CARRUSEL TARJETAS
+// ============================================
+
+document.addEventListener("DOMContentLoaded", () => {
+    const track = document.querySelector(".carrusel-track");
+    const items = Array.from(document.querySelectorAll(".carrusel-item"));
+    const btnPrev = document.querySelector(".carrusel-btn.prev");
+    const btnNext = document.querySelector(".carrusel-btn.next");
+    const wrapper = document.querySelector(".carrusel-wrapper");
+
+    if (!track || items.length === 0) return;
+
+    // Oculta flechas si solo hay 1
+    if (items.length <= 1) {
+        wrapper.classList.add("single");
+        return;
+    }
+
+    let index = 0;
+
+    function updateCarousel() {
+        const itemWidth = items[0].clientWidth + 20; // item + gap
+        track.style.transform = `translateX(${-index * itemWidth}px)`;
+    }
+
+    btnNext.addEventListener("click", () => {
+        if (index < items.length - 1) index++;
+        updateCarousel();
+    });
+
+    btnPrev.addEventListener("click", () => {
+        if (index > 0) index--;
+        updateCarousel();
+    });
+
+    window.addEventListener("resize", updateCarousel);
 });

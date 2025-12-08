@@ -162,22 +162,35 @@
                 <!-- Imagen izquierda -->
                 <div class="tipologia-img">
                     <div class="img-frame">
-                        <img src="images/resources/neoclasic.webp" alt="Render fachada tipología neoclasic">
+                        <img src="images/resources/minim.webp" alt="Render fachada tipología neoclasic">
                     </div>
                 </div>
 
                 <!-- Texto derecha -->
                 <div class="tipologia-info card-float">
                     <ul class="tipologia-list">
-                        <li><b>Superficie:</b> 51 m²</li>
-                        <li><b>Incluye:</b> 2 habitaciones + 1 baño familiar</li>
                         <li>
-                            <b>Urbanización:</b>
-                            <a target="_blank" href="https://maps.app.goo.gl/biuCb6hXwUkdXjyQ6">Capiatá — Rojas
-                                Cañada</a>
+                            <b><i class='bx bx-ruler'></i> Superficie:</b> 51 m²
                         </li>
-                        <li><b>Contado:</b> 350.000.000 Gs.</li>
-                        <li><b>Cuotas desde:</b> 2.499.000 Gs.</li>
+
+                        <li>
+                            <b><i class='bx bx-home-alt-2'></i> Incluye:</b> 2 habitaciones + 1 baño familiar
+                        </li>
+
+                        <li>
+                            <b><i class='bx bx-map'></i> Urbanización:</b>
+                            <a target="_blank" href="https://maps.app.goo.gl/biuCb6hXwUkdXjyQ6">
+                                Capiatá — Rojas Cañada
+                            </a>
+                        </li>
+
+                        <li>
+                            <b><i class='bx bx-money-withdraw'></i> Contado:</b> 350.000.000 Gs.
+                        </li>
+
+                        <li>
+                            <b><i class='bx bx-credit-card'></i> Cuotas desde:</b> 2.499.000 Gs.
+                        </li>
                     </ul>
 
                     <a target="_blank"
@@ -455,7 +468,7 @@
             </div>
 
             <section class="footer-col footer-qr-box animate-right">
-                <img src="images/resources/qr.webp" alt="QR para contacto vía WhatsApp" class="footer-qr">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3607.4538931871575!2d-57.60533142461522!3d-25.288949977652035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjXCsDE3JzIwLjIiUyA1N8KwMzYnMDkuOSJX!5e0!3m2!1ses!2spy!4v1765149810327!5m2!1ses!2spy" width="300" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </section>
 
         </div>
@@ -484,6 +497,39 @@
         class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
         <i class='bx bxl-whatsapp'></i>
     </a>
+
+
+    <!-- ========================== -->
+    <!-- POPUP DE OFERTA LIMITADA -->
+    <!-- ========================== -->
+    <div id="promo-overlay" class="promo-overlay"></div>
+
+    <div id="promo-modal" class="promo-modal">
+        <button class="promo-close"><i class='bx bx-x'></i></button>
+        <h2>¡Oferta de tiempo limitado!</h2>
+
+        <!-- COUNTDOWN DENTRO DEL MODAL -->
+        <div class="modal-countdown">
+            <div class="time-box">
+                <span id="mh" class="num">00</span>
+                <small>Horas</small>
+            </div>
+
+            <div class="time-box">
+                <span id="mm" class="num">00</span>
+                <small>Minutos</small>
+            </div>
+
+            <div class="time-box">
+                <span id="ms" class="num">00</span>
+                <small>Segundos</small>
+            </div>
+        </div>
+
+        <p>¡Quedan pocas horas! Aprovechá tu bono exclusivo antes de que desaparezca para siempre.</p>
+
+        <a href="#section4" class="promo-btn cta">Ver beneficios</a>
+    </div>
 
 
     <script src="js/script.js"></script>
