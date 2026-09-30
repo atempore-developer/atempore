@@ -4,8 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <script src="./support.js"></script>
-<!-- Cloudflare Turnstile (anti-bots del formulario de contacto; se renderiza desde el componente) -->
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
 <!-- Meta Pixel Atempore -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -481,17 +479,7 @@ src="https://www.facebook.com/tr?id=1549271710206254&ev=PageView&noscript=1"/></
               <label style="display:block;font-size:13px;color:#9C9082;margin-bottom:8px;">Mensaje</label>
               <textarea value="{{ form.msg }}" onInput="{{ onMsg }}" rows="4" placeholder="Contanos qué estás buscando..." style="width:100%;background:#1C1813;border:1px solid #3A322B;border-radius:12px;padding:14px 16px;color:#fff;font-size:15px;outline:none;resize:vertical;transition:border-color .25s;font-family:inherit;" style-focus="border-color:#B5622E;"></textarea>
             </div>
-            <!-- Campo trampa anti-bots: invisible para personas, el CRM descarta el envío si viene lleno -->
-            <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
-              <label>Sitio web</label>
-              <input value="{{ form.website }}" onInput="{{ onWebsite }}" tabIndex="-1" autoComplete="off" />
-            </div>
-            <!-- Cloudflare Turnstile: el componente renderiza el widget acá (React no toca su contenido) -->
-            <div id="cf-turnstile-box" style="min-height:65px;margin-bottom:20px;"></div>
-            <sc-if value="{{ hasError }}">
-              <p role="alert" style="background:rgba(220,80,60,.12);border:1px solid rgba(220,80,60,.4);color:#F2B8A8;border-radius:12px;padding:12px 16px;font-size:14px;line-height:1.5;margin-bottom:20px;">{{ error }}</p>
-            </sc-if>
-            <button type="submit" disabled="{{ sending }}" style="width:100%;opacity:{{ btnOpacity }};cursor:{{ btnCursor }};display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#B5622E;background-image:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.42) 45%,rgba(255,255,255,.42) 50%,transparent 70%);background-size:250% 100%;background-repeat:no-repeat;background-position:-40% 0;color:#fff;border:none;padding:17px;border-radius:100px;font-size:16px;font-weight:600;transition:background-position .8s ease, box-shadow .3s;" style-hover="background-position:140% 0;box-shadow:0 12px 28px -12px rgba(181,98,46,.8);">{{ btnLabel }}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+            <button type="submit" style="width:100%;display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#B5622E;background-image:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.42) 45%,rgba(255,255,255,.42) 50%,transparent 70%);background-size:250% 100%;background-repeat:no-repeat;background-position:-40% 0;color:#fff;border:none;padding:17px;border-radius:100px;font-size:16px;font-weight:600;transition:background-position .8s ease, box-shadow .3s;" style-hover="background-position:140% 0;box-shadow:0 12px 28px -12px rgba(181,98,46,.8);">Enviar mensaje<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
           </form>
         </sc-if>
       </div>
@@ -558,10 +546,8 @@ class Component extends DCLogic {
     projIndex1: 0,
     projIndex2: 0,
     openFaq: -1,
-    form: { nombre: '', tel: '', email: '', msg: '', website: '' },
+    form: { nombre: '', tel: '', email: '', msg: '' },
     sent: false,
-    sending: false,
-    error: '',
     year: new Date().getFullYear(),
   };
 
@@ -607,14 +593,11 @@ class Component extends DCLogic {
     } else {
       els.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
     }
-
-    this._mountTurnstile();
   }
 
   componentWillUnmount() {
     if (this._onScroll) window.removeEventListener('scroll', this._onScroll);
     if (this._io) this._io.disconnect();
-    clearTimeout(this._tsTimer);
     clearInterval(this._galTimer);
   }
 
@@ -661,65 +644,14 @@ class Component extends DCLogic {
   prevGal = () => { this.setState(s => ({ galIndex: (s.galIndex + this.GAL_N - 1) % this.GAL_N })); this._startGalAuto(); };
   goGal = (i) => { this.setState({ galIndex: i }); this._startGalAuto(); };
 
-  // --- formulario de contacto → CRM (POST directo desde el navegador) ---
-  // En localhost se usa el CRM local y la site-key de prueba de Cloudflare (el CRM la acepta solo en modo debug).
-  get _isLocal() { return ['localhost', '127.0.0.1'].includes(location.hostname); }
-  get _crmUrl() { return this._isLocal ? 'http://localhost:3001' : 'https://app.atempore.com.py'; }
-  get _siteKey() { return this._isLocal ? '1x00000000000000000000AA' : '0x4AAAAAAFJxzV3MGyjP7TY-'; }
-
-  // El script de Turnstile carga async: reintenta hasta que estén el script y el contenedor.
-  _mountTurnstile = () => {
-    clearTimeout(this._tsTimer);
-    const el = document.getElementById('cf-turnstile-box');
-    if (!el || !window.turnstile) {
-      this._tsTries = (this._tsTries || 0) + 1;
-      if (this._tsTries < 100) this._tsTimer = setTimeout(this._mountTurnstile, 300);
-      return;
-    }
-    if (this._tsId !== undefined && el.childElementCount) return;
-    this._tsId = window.turnstile.render(el, { sitekey: this._siteKey, theme: 'dark', language: 'es' });
-  };
-
-  _resetTurnstile = () => {
-    // Los tokens de Turnstile son de un solo uso: tras un intento fallido hay que pedir otro.
-    if (window.turnstile && this._tsId !== undefined) window.turnstile.reset(this._tsId);
-  };
-
-  submit = async (e) => {
+  submit = (e) => {
     e.preventDefault();
-    if (this.state.sending) return;
-    const { nombre, tel, email, msg, website } = this.state.form;
-    if (!nombre.trim() && !tel.trim() && !email.trim()) {
-      this.setState({ error: 'Dejanos al menos tu nombre y un teléfono o email para poder contactarte.' });
-      return;
-    }
-    const token = window.turnstile && this._tsId !== undefined ? window.turnstile.getResponse(this._tsId) : '';
-    if (!token) {
-      this.setState({ error: 'Esperá a que termine la verificación de seguridad (el recuadro de arriba) y volvé a intentar.' });
-      return;
-    }
-
-    this.setState({ sending: true, error: '' });
-    try {
-      const res = await fetch(this._crmUrl + '/api/public/formulario-web', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nombre, telefono: tel, email, mensaje: msg, website, 'cf-turnstile-response': token }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (res.ok && data.ok) {
-        this.setState({ sent: true, sending: false });
-        if (window.fbq) window.fbq('track', 'Lead');
-        return;
-      }
-      const error = res.status === 429
-        ? 'Recibimos demasiados mensajes desde tu conexión. Probá más tarde o escribinos por WhatsApp.'
-        : (data.message || 'No pudimos enviar tu mensaje. Probá de nuevo o escribinos por WhatsApp.');
-      this.setState({ sending: false, error });
-    } catch (err) {
-      this.setState({ sending: false, error: 'No pudimos conectar con el servidor. Revisá tu conexión o escribinos por WhatsApp.' });
-    }
-    this._resetTurnstile();
+    const { nombre, tel, email, msg } = this.state.form;
+    const subject = `Consulta de ${nombre || 'un interesado'} — Atempore`;
+    const body = `Nombre: ${nombre}\nTeléfono: ${tel}\nEmail: ${email}\n\nMensaje:\n${msg}`;
+    const mailto = `mailto:contacto@atempore.com.py?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+    this.setState({ sent: true });
   };
 
   renderVals() {
@@ -825,14 +757,7 @@ class Component extends DCLogic {
       onTel: (e) => this.setState(s => ({ form: { ...s.form, tel: e.target.value } })),
       onEmail: (e) => this.setState(s => ({ form: { ...s.form, email: e.target.value } })),
       onMsg: (e) => this.setState(s => ({ form: { ...s.form, msg: e.target.value } })),
-      onWebsite: (e) => this.setState(s => ({ form: { ...s.form, website: e.target.value } })),
       submit: this.submit,
-      sending: this.state.sending,
-      hasError: !!this.state.error,
-      error: this.state.error,
-      btnLabel: this.state.sending ? 'Enviando…' : 'Enviar mensaje',
-      btnOpacity: this.state.sending ? '.7' : '1',
-      btnCursor: this.state.sending ? 'wait' : 'pointer',
     };
   }
 }
